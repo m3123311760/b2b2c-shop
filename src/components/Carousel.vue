@@ -38,7 +38,6 @@ export default {
     }
   },
   setup(props) {
-    const currentIndex = ref(0);
     let timer = null;
 
     const next = () => {
