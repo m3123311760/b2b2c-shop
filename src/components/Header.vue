@@ -3,10 +3,10 @@
     <div class="max-w-screen-2xl mx-auto px-4 py-4">
       <div class="flex justify-between items-center">
         <!-- Logo -->
-        <div class="flex items-center">
-          <span class="text-2xl font-bold">Logo</span>
+        <router-link to="/" class="flex items-center">
+          <img src="/logo.webp" alt="Vue Logo" class="h-14 w-14" />
           <span class="ml-3 text-2xl font-bold">B2B2C商城</span>
-        </div>
+        </router-link>
 
         <!-- 搜索栏 -->
         <div class="w-1/3">

@@ -6,17 +6,19 @@
         <div class="w-2/3">
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             <div v-for="product in products" :key="product.id" class="bg-white rounded-lg shadow-md overflow-hidden">
-              <img :src="product.image" :alt="product.name" class="w-full h-48 object-cover" />
-              <div class="p-4">
-                <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
-                <p class="text-gray-600 mb-2">这是一个很棒的商品描述。</p>
-                <div class="flex justify-between items-center">
-                  <span class="text-xl font-bold text-red-600">¥{{ product.price }}</span>
-                  <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
-                    加入购物车
-                  </button>
+              <router-link :to="{ name: 'ProductDetail', params: { id: product.id } }">
+                <img :src="product.image" :alt="product.name" class="w-full h-48 object-cover" />
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold mb-2">{{ product.name }}</h3>
+                  <p class="text-gray-600 mb-2">这是一个很棒的商品描述。</p>
+                  <div class="flex justify-between items-center">
+                    <span class="text-xl font-bold text-red-600">¥{{ product.price.toFixed(2) }}</span>
+                    <button @click.prevent="buyNow(product.id)" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                      立即购买
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </router-link>
             </div>
           </div>
         </div>
@@ -38,6 +40,7 @@
 
 <script>
 import { ChevronRight } from 'lucide-vue-next'
+import { useRouter } from 'vue-router'
 
 export default {
   name: 'FeaturedProducts',
@@ -54,5 +57,14 @@ export default {
       required: true,
     },
   },
+  setup() {
+    const router = useRouter()
+
+    const buyNow = (productId) => {
+      router.push({ name: 'ProductDetail', params: { id: productId } })
+    }
+
+    return { buyNow }
+  }
 }
 </script>

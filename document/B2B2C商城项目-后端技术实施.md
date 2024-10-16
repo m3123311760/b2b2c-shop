@@ -7,7 +7,7 @@
 - API网关: Go
 - 微服务: 主要使用Java Spring Boot，部分高性能服务使用Go
 - 消息队列: Kafka
-- 数据库: MySQL (主数据存储), Redis (缓存)
+- 数据库: MySQL (主数据存储), Redis (缓存), ShardingSphere(数据库中间件), PostgreSQL(归档数据存储：日志、订单)
 - 搜索引擎: Elasticsearch
 - 容器化: Docker, Kubernetes
 - 推流服务：Nginx-RTMP
@@ -46,10 +46,16 @@
 ### 2.4 数据库
 - MySQL:
   - 版本: 8.x
-  - 分库分表策略: Sharding-JDBC
+  - 分库分表策略: ShardingSphere
 - Redis:
   - 版本: 6.x
   - 用途: 缓存、会话存储、限流
+- PostgreSQL:
+  - 版本: 13.x
+  - 用途: 归档数据存储 (如日志、订单)
+- ShardingSphere:
+  - 版本: 5.x
+  - 用途: 分库分表分片的数据库中间件
 
 ### 2.5 搜索引擎 (Elasticsearch)
 - 版本: 7.x
